@@ -1,0 +1,48 @@
+IEnumerable<T>: Executes the query on the client-side and works with in-memory data.
+
+IQueryable<T>: The query execution happens on the server-side. الداتا لسه مش معايا فى الميمورى ,الداتا لسه ريموت عنى لسه فى الداتا بيز
+
+--------------------------------------------------
+
+IEnumerable<T>:  interface is designed to allow simple iteration over a collection of objects 
+                 Deferred Execution: Supports deferred execution
+		
+  
+	List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
+
+        // Define a query with deferred execution
+        IEnumerable<int> query = numbers.Where(n => n > 2);
+
+        // Add a new element to the list
+        numbers.Add(6);
+
+        // Execute the query
+        foreach (int number in query)
+        {
+            Console.WriteLine(number);
+        }
+
+
+How Deferred Execution Works with IEnumerable<T>
+When you define a query using LINQ on an IEnumerable<T>, the query is not executed immediately. Instead, an object representing the query is created. The actual execution happens only when you start iterating over the query results, typically using a foreach loop, calling a method like ToList(), or any other method that forces enumeration.
+
+
+ICollection<T>
+---------------
+ICollection<T> implements IEnumerable interface but supports adding, removing, and clearing items, while IEnumerable<T> does not.
+IEnumerable<int> enumerable = new List<int> { 1, 2, 3, 4, 5 };
+ICollection<int> collection = new List<int> { 1, 2, 3, 4, 5 };
+
+
+
+IList<T>
+---------------
+IList<T> implements ICollection<T> interface but supports addingAt(int index), removingAt(int index), and clearing items, while IEnumerable<T> does not.
+
+
+
+
+
+
+
+
